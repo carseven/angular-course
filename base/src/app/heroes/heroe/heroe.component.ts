@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'base-heroe',
+  selector: 'app-heroe',
   templateUrl: './heroe.component.html',
 })
 export class HeroComponent {

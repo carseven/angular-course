@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'base-counter',
+  selector: 'app-counter',
   template: `
     <h1 style="text-align: center; font-size: 50px">Counter</h1>
     <h2 style="text-align: center">{{ counter }}</h2>
