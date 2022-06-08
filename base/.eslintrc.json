@@ -10,7 +10,7 @@
       ],
       "parserOptions": {
         "project": [
-          "tsconfig.json"
+          "base/tsconfig.json"
         ],
         "createDefaultProgram": true
       },
