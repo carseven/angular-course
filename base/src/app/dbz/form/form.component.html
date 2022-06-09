@@ -1,0 +1,17 @@
+<h3 class="center-text">Agregar</h3>
+<hr />
+<form (ngSubmit)="onFormSubmit()">
+  <input
+    type="text"
+    placeholder="Nombre"
+    name="name"
+    [(ngModel)]="dragonBallCharacter.name"
+  />
+  <input
+    type="number"
+    placeholder="Poder"
+    name="power"
+    [(ngModel)]="dragonBallCharacter.power"
+  />
+  <button type="submit">Agregar</button>
+</form>

@@ -1,0 +1,16 @@
+<h1 style="text-align: center">Dragon Ball Z</h1>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <app-characters
+      [dragonBallCharacters]="dragonBallCharacters"
+    ></app-characters>
+  </div>
+
+  <div class="col">
+    <app-form
+      (dragonBallCharactersEmitter)="dragonBallCharacters.push($event)"
+    ></app-form>
+  </div>
+</div>

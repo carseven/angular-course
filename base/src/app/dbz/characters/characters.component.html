@@ -1,0 +1,12 @@
+<h3 class="center-text">Personajes</h3>
+<hr />
+<ul *ngIf="dragonBallCharacters.length; else noLoadedCharacter">
+  <li *ngFor="let dragonBallCharacter of dragonBallCharacters">
+    {{ dragonBallCharacter.name }} -
+    {{ dragonBallCharacter.power | number }}
+  </li>
+</ul>
+
+<ng-template #noLoadedCharacter>
+  <p class="center-text">No data</p>
+</ng-template>
