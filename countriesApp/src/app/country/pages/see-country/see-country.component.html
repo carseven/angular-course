@@ -1,1 +1,44 @@
-<p>see-country works!</p>
+<div *ngIf="!country; else pais" class="alert alert-info">Fetching data...</div>
+
+<ng-template #pais>
+  <div class="row">
+    <div class="col-12">
+      <h1>
+        Country: <small>{{ country?.name || "" }}</small>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-4">
+      <h3>Flag</h3>
+      <img class="img-thumbnail" [src]="country?.flag" [alt]="imgAlt" />
+    </div>
+    <div class="col-6">
+      <h3>Information</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Population:</strong> {{ country?.population | number }}
+        </li>
+        <li class="list-group-item">
+          <strong>Numeric code:</strong> {{ country?.numericCode }}
+        </li>
+        <li class="list-group-item">
+          <strong>Alpha code:</strong> {{ country?.alpha2Code }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <h3>Translations</h3>
+    <div class="col">
+      <span
+        *ngFor="let translation of countryTranslations; let i = index"
+        class="badge bg-primary mr-4"
+      >
+        {{ translation[1] }}</span
+      >
+    </div>
+  </div>
+</ng-template>
