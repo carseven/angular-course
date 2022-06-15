@@ -12,7 +12,11 @@
   <div class="row mt-4">
     <div class="col-4">
       <h3>Flag</h3>
-      <img class="img-thumbnail" [src]="country?.flag" [alt]="imgAlt" />
+      <img
+        class="img-thumbnail"
+        [src]="country?.flag"
+        alt="Flag of {{ country?.name }}"
+      />
     </div>
     <div class="col-6">
       <h3>Information</h3>
