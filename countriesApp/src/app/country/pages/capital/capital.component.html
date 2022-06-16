@@ -1,27 +1,29 @@
-<h2>By Capital</h2>
-<hr />
+<div class="animate__animated animate__fadeInDown">
+  <h2>By Capital</h2>
+  <hr />
 
-<div class="row">
-  <div class="col">
-    <app-country-input
-      placeholder="Search country by capital..."
-      (onEnter)="searchCountry($event)"
-      (onDebounce)="searchCountry($event)"
-    ></app-country-input>
-  </div>
-</div>
-
-<div
-  *ngIf="!countries.length && this.lastQuerySearch"
-  class="alert alert-danger mt-2"
->
-  Search query {{ lastQuerySearch }} has no data
-</div>
-
-<ng-container *ngIf="countries.length">
-  <div class="row mt-2">
+  <div class="row">
     <div class="col">
-      <app-country-table [countries]="countries"></app-country-table>
+      <app-country-input
+        placeholder="Search country by capital..."
+        (onEnter)="searchCountry($event)"
+        (onDebounce)="searchCountry($event)"
+      ></app-country-input>
     </div>
   </div>
-</ng-container>
+
+  <div
+    *ngIf="!countries.length && this.lastQuerySearch"
+    class="alert alert-danger mt-2 animate__animated animate__fadeInRight"
+  >
+    Search query {{ lastQuerySearch }} has no data
+  </div>
+
+  <ng-container *ngIf="countries.length">
+    <div class="row mt-2">
+      <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+      </div>
+    </div>
+  </ng-container>
+</div>

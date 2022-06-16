@@ -1,7 +1,7 @@
 <div *ngIf="!country; else pais" class="alert alert-info">Fetching data...</div>
 
 <ng-template #pais>
-  <div class="row">
+  <div class="row animate__animated animate__fadeInDown">
     <div class="col-12">
       <h1>
         Country: <small>{{ country?.name || "" }}</small>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="row mt-4">
-    <div class="col-4">
+    <div class="col-4 animate__animated animate__rotateIn">
       <h3>Flag</h3>
       <img
         class="img-thumbnail"
@@ -18,7 +18,7 @@
         alt="Flag of {{ country?.name }}"
       />
     </div>
-    <div class="col-6">
+    <div class="col-6 animate__animated animate__fadeInRight">
       <h3>Information</h3>
       <ul class="list-group">
         <li class="list-group-item">
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="row mt-4">
+  <div class="row mt-4 animate__animated animate__fadeInUp">
     <h3>Translations</h3>
     <div class="col">
       <span

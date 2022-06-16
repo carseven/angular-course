@@ -1,1 +1,29 @@
-<p>region works!</p>
+<div class="animate__animated animate__fadeInDown">
+  <h1>By region</h1>
+  <hr />
+
+  <h5>Select a region</h5>
+
+  <div class="row">
+    <div class="col">
+      <button
+        class="btn btn-outline-primary"
+        [ngClass]="
+          region[0] === selectedRegion ? 'btn-primary' : 'btn-outline-primary'
+        "
+        *ngFor="let region of regions"
+        (click)="searchRegion(region)"
+      >
+        {{ region[1] }}
+      </button>
+    </div>
+  </div>
+
+  <ng-container>
+    <div *ngIf="countries.length" class="row mt-2">
+      <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+      </div>
+    </div>
+  </ng-container>
+</div>
