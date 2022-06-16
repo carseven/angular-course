@@ -23,8 +23,8 @@ export class CountryInputComponent implements OnInit {
   }
 
   onSubmit(inputCountry: string): void {
-    console.log(inputCountry);
     this.onEnter.emit(inputCountry);
+    this.inputCountry = '';
   }
 
   onKeyPress(): void {

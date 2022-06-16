@@ -5,15 +5,24 @@ import { CountryService } from '../../services/country.service';
 @Component({
   selector: 'app-capital',
   templateUrl: './capital.component.html',
-  styles: [],
+  styles: [
+    `
+      li {
+        cursor: pointer;
+      }
+    `,
+  ],
 })
 export class CapitalComponent {
   public countries: CountryResponse[] = [];
   public lastQuerySearch: string = '';
+  public capitalSuggestions: CountryResponse[] = [];
+  public debounceInputSearch: string = '';
 
   constructor(private countryService: CountryService) {}
 
   searchCountry(inputCountry: string): void {
+    this.capitalSuggestions = [];
     this.countryService
       .searchCountriesByCapitalCityName(inputCountry)
       .subscribe((response: CountryResponse[]) => {
@@ -23,6 +32,11 @@ export class CapitalComponent {
   }
 
   suggestions(inputCountry: string): void {
-    console.log(inputCountry);
+    this.debounceInputSearch = inputCountry;
+    this.countryService
+      .searchCountriesByCapitalCityName(inputCountry)
+      .subscribe((response: CountryResponse[]) => {
+        this.capitalSuggestions = response.slice(0, 8);
+      });
   }
 }

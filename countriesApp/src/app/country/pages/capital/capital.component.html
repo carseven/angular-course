@@ -7,17 +7,34 @@
       <app-country-input
         placeholder="Search country by capital..."
         (onEnter)="searchCountry($event)"
-        (onDebounce)="searchCountry($event)"
+        (onDebounce)="suggestions($event)"
       ></app-country-input>
     </div>
   </div>
 
-  <div
-    *ngIf="!countries.length && this.lastQuerySearch"
-    class="alert alert-danger mt-2 animate__animated animate__fadeInRight"
-  >
-    Search query {{ lastQuerySearch }} has no data
-  </div>
+  <ul class="list-group">
+    <li
+      *ngFor="let capitalSuggestion of capitalSuggestions"
+      class="list-group-item list-group-item-action"
+      (click)="searchCountry(capitalSuggestion.capital)"
+    >
+      {{ capitalSuggestion.capital }}
+    </li>
+    <li
+      *ngIf="capitalSuggestions.length"
+      class="list-group-item list-group-item-action"
+      (click)="searchCountry(debounceInputSearch)"
+    >
+      All results
+    </li>
+  </ul>
+
+  <app-no-data-alert
+    [showAlert]="
+      !countries.length && !capitalSuggestions.length && !!this.lastQuerySearch
+    "
+    [message]="'Search query ' + lastQuerySearch + ' has no data'"
+  ></app-no-data-alert>
 
   <ng-container *ngIf="countries.length">
     <div class="row mt-2">

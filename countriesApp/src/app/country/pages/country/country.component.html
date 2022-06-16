@@ -7,17 +7,41 @@
       <app-country-input
         placeholder="Search by country..."
         (onEnter)="searchCountry($event)"
-        (onDebounce)="searchCountry($event)"
+        (onDebounce)="suggestions($event)"
       ></app-country-input>
     </div>
   </div>
 
-  <div
-    *ngIf="!countries.length && this.lastQuerySearch"
-    class="alert alert-danger mt-2"
-  >
-    Search query {{ lastQuerySearch }} has no data
-  </div>
+  <ul class="list-group">
+    <li
+      *ngFor="let countrySuggestion of countriesSuggestions"
+      class="list-group-item list-group-item-action"
+      (click)="searchCountry(countrySuggestion.name)"
+    >
+      <a
+        class="nav-link"
+        [routerLink]="['/country', countrySuggestion.alpha2Code]"
+      >
+        {{ countrySuggestion.name }}</a
+      >
+    </li>
+    <li
+      *ngIf="countriesSuggestions.length"
+      class="list-group-item list-group-item-action"
+      (click)="searchCountry(debounceInputSearch)"
+    >
+      All results
+    </li>
+  </ul>
+
+  <app-no-data-alert
+    [showAlert]="
+      !countries.length &&
+      !countriesSuggestions.length &&
+      !!this.lastQuerySearch
+    "
+    [message]="'Search query ' + lastQuerySearch + ' has no data'"
+  ></app-no-data-alert>
 
   <ng-container *ngIf="countries.length">
     <div class="row mt-2">

@@ -5,11 +5,19 @@ import { CountryService } from '../../services/country.service';
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
-  styles: [],
+  styles: [
+    `
+      li {
+        cursor: pointer;
+      }
+    `,
+  ],
 })
 export class CountryComponent {
   public countries: CountryResponse[] = [];
   public lastQuerySearch: string = '';
+  public countriesSuggestions: CountryResponse[] = [];
+  public debounceInputSearch: string = '';
 
   constructor(private countryService: CountryService) {}
 
@@ -19,10 +27,16 @@ export class CountryComponent {
       .subscribe((response: CountryResponse[]) => {
         this.countries = response;
         this.lastQuerySearch = inputCountry;
+        this.countriesSuggestions = [];
       });
   }
 
   suggestions(inputCountry: string): void {
-    console.log(inputCountry);
+    this.debounceInputSearch = inputCountry;
+    this.countryService
+      .searchCountriesByName(inputCountry)
+      .subscribe((response: CountryResponse[]) => {
+        this.countriesSuggestions = response.slice(0, 4);
+      });
   }
 }
