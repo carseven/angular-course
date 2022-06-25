@@ -4,14 +4,12 @@ import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class MenuComponent implements OnInit {
-
   items: MenuItem[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.items = [
@@ -22,24 +20,25 @@ export class MenuComponent implements OnInit {
           {
             label: 'Textos y Fechas',
             icon: 'pi pi-align-left',
-            routerLink: '/'
+            routerLink: '/',
           },
           {
             label: 'Números',
             icon: 'pi pi-dollar',
-            routerLink: 'numeros'
+            routerLink: 'numeros',
           },
           {
             label: 'No comunes',
             icon: 'pi pi-globe',
-            routerLink: 'no-comunes'
-          }]
+            routerLink: 'no-comunes',
+          },
+        ],
       },
       {
         label: 'Pipes personalizados',
-        icon: 'pi pi-cog'
-      }
+        icon: 'pi pi-cog',
+        routerLink: 'ordenar',
+      },
     ];
   }
-
 }

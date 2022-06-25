@@ -6,12 +6,11 @@ import { NoComunesComponent } from './ventas/pages/no-comunes/no-comunes.compone
 import { NumerosComponent } from './ventas/pages/numeros/numeros.component';
 import { OrdenarComponent } from './ventas/pages/ordenar/ordenar.component';
 
-
 const routes: Routes = [
   {
     path: '',
     component: BasicosComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'numeros',
@@ -27,18 +26,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
-  }
-
+    redirectTo: '',
+  },
 ];
 
-
 @NgModule({
-  imports: [
-    RouterModule.forRoot( routes )
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRouterModule { }
+export class AppRouterModule {}
