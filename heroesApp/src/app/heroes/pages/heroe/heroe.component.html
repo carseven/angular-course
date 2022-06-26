@@ -1,1 +1,12 @@
-<p>heroe works!</p>
+<mat-grid-list cols="1" *ngIf="!hero; else heroTemplate">
+  <mat-grid-tile>
+    <mat-spinner></mat-spinner>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #heroTemplate>
+  <app-heroe-info
+    [hero]="hero"
+    [goBackUrl]="['heroes', 'list']"
+  ></app-heroe-info>
+</ng-template>

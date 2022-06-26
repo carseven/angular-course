@@ -1,4 +1,41 @@
-<p>Heroe Home Page!</p>
-<hr />
+<mat-sidenav-container class="container" autosize>
+  <mat-sidenav #sidenav class="sidenav" mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item>
+        <button mat-icon-button (click)="isExpanded = !isExpanded">
+          <mat-icon *ngIf="!isExpanded">chevron_right</mat-icon>
+          <mat-icon *ngIf="isExpanded">chevron_left</mat-icon>
+        </button>
+      </mat-list-item>
 
-<router-outlet></router-outlet>
+      <mat-list-item routerLink="./list">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <p matLine *ngIf="isExpanded">Home</p>
+      </mat-list-item>
+
+      <mat-list-item routerLink="./search">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <p matLine *ngIf="isExpanded">Search Heroe</p>
+      </mat-list-item>
+
+      <mat-list-item routerLink="./create">
+        <mat-icon mat-list-icon>add</mat-icon>
+        <p matLine *ngIf="isExpanded">Add new Heroe</p>
+      </mat-list-item>
+
+      <mat-list-item routerLink="./edit">
+        <mat-icon mat-list-icon>edit</mat-icon>
+        <p matLine *ngIf="isExpanded">Edit a Heroe</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>logout</mat-icon>
+        <p matLine *ngIf="isExpanded">Logout</p>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
