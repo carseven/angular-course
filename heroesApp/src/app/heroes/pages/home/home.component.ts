@@ -6,14 +6,7 @@ import { Component } from '@angular/core';
   styles: [
     `
       .container {
-        width: 100%;
-        height: 100vw;
-        border: 1px solid rgba(0, 0, 0, 0.5);
-      }
-
-      .sidenav-content {
         padding: 20px;
-        height: 100vw;
       }
     `,
   ],
