@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateComponent } from './pages/create/create.component';
+import { AddComponent } from './pages/add/add.component';
 import { HeroeComponent } from './pages/heroe/heroe.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListComponent } from './pages/list/list.component';
@@ -12,20 +12,20 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: 'search',
-        component: SearchComponent,
-      },
-      {
         path: 'list',
         component: ListComponent,
       },
       {
-        path: 'create',
-        component: CreateComponent,
+        path: 'add',
+        component: AddComponent,
       },
       {
         path: 'edit/:id',
-        component: CreateComponent,
+        component: AddComponent,
+      },
+      {
+        path: 'search',
+        component: SearchComponent,
       },
       {
         path: ':id',
