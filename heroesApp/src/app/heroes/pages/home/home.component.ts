@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -12,5 +13,8 @@ import { Component } from '@angular/core';
   ],
 })
 export class HomeComponent {
-  public isExpanded: boolean = false;
+  get auth() {
+    return this.authService.auth;
+  }
+  constructor(private readonly authService: AuthService) {}
 }
