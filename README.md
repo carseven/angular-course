@@ -7,3 +7,4 @@ For this, I have developed the following apps:
 - [Countries App](https://voluble-semolina-ca7bbf.netlify.app/)
 - [Pipes APP](https://ephemeral-rolypoly-f6a63c.netlify.app): Simple project for testing common Angular pipes and Custom Pipes
 - [Maps APP](https://ephemeral-rolypoly-f6a63c.netlify.app)
+- [Map Search Directions App](https://resonant-hotteok-2eb8d2.netlify.app/)
