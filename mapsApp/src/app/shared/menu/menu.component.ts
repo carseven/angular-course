@@ -5,7 +5,6 @@ interface MenuItem {
   nombre: string;
 }
 
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,29 +13,26 @@ interface MenuItem {
       li {
         cursor: pointer;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class MenuComponent {
-
   menuItems: MenuItem[] = [
     {
       ruta: '/mapas/fullscreen',
-      nombre: 'FullScreen'
+      nombre: 'FullScreen',
     },
     {
       ruta: '/mapas/zoom-range',
-      nombre: 'Zoom Range'
+      nombre: 'Zoom Range',
     },
     {
       ruta: '/mapas/marcadores',
-      nombre: 'Marcadores'
+      nombre: 'Marcadores',
     },
     {
       ruta: '/mapas/propiedades',
-      nombre: 'Propiedades'
+      nombre: 'Propiedades',
     },
   ];
-
-
 }

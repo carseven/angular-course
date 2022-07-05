@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 
 @Component({
@@ -11,15 +17,14 @@ import * as mapboxgl from 'mapbox-gl';
         height: 150px;
         margin: 0px;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class MiniMapaComponent implements AfterViewInit {
-
-  @Input() lngLat: [number, number] = [0,0];
+  @Input() lngLat: [number, number] = [0, 0];
   @ViewChild('mapa') divMapa!: ElementRef;
 
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit(): void {
     const mapa = new mapboxgl.Map({
@@ -27,12 +32,9 @@ export class MiniMapaComponent implements AfterViewInit {
       style: 'mapbox://styles/mapbox/streets-v11',
       center: this.lngLat,
       zoom: 15,
-      interactive: false
+      interactive: false,
     });
 
-    new mapboxgl.Marker()
-        .setLngLat( this.lngLat )
-        .addTo( mapa );
+    new mapboxgl.Marker().setLngLat(this.lngLat).addTo(mapa);
   }
-
 }
