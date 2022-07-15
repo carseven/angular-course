@@ -1,18 +1,23 @@
 <div class="row">
   <div
-    *ngFor="let gif of gifs"
+    *ngFor="let gif of gifs; let id = index"
     class="col-md-4 col-sm-6 mb-4 animate__animated animate__fadeIn"
   >
-    <div class="card">
+    <div class="card-img">
       <div class="card-body">
-        <img
-          src="{{ gif.images.downsized.url }}"
-          [alt]="gif.title"
-          class="card-img-top noDataGif"
-        />
         <p>
-          {{ gif.title | titlecase }}
+          <a [href]="gif.images.fixed_height.webp">{{
+            gif.title | titlecase | giftTitleShortener
+          }}</a>
         </p>
+        <img
+          class="flex-i"
+          [attr.loading]="id <= 5 ? '' : 'lazy'"
+          [src]="gif.images.fixed_height.webp"
+          [height]="gif.images.fixed_height.height"
+          [width]="gif.images.fixed_height.width"
+          [alt]="gif.title"
+        />
       </div>
     </div>
   </div>

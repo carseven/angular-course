@@ -1,3 +1,38 @@
-.no-data-container {
-  justify-content: center;
+.card-img {
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-i {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  align-items: center;
+}
+
+a:link {
+  color: #1098ad;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #1098ad;
+}
+
+a:hover {
+  color: orangered;
+  font-weight: bold;
+  text-decoration: underline wavy orangered;
+}
+
+a:active {
+  background-color: black;
+  font-style: italic;
+}
+
+p {
+  text-align: center;
 }
