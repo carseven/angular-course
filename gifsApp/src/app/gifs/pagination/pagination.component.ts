@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { tap } from 'rxjs';
 import { Pagination } from '../interfaces/gifs.interfaces';
 import { GifService } from '../services/gif.service';
 
@@ -10,10 +8,6 @@ import { GifService } from '../services/gif.service';
   styleUrls: ['./pagination.component.css'],
 })
 export class PaginationComponent implements OnInit {
-  public form: FormGroup = this.fb.group({
-    pages: [0],
-  });
-
   get pages(): number[] {
     const pagination = this.gifService.gifDataGrid.pagination;
     return this.getPages(pagination);
@@ -23,34 +17,30 @@ export class PaginationComponent implements OnInit {
     return this.gifService.gifDataGrid.pagination;
   }
 
-  constructor(private gifService: GifService, private fb: FormBuilder) {}
+  get hasDataLoad() {
+    return this.gifService.hasDataLoaded;
+  }
+
+  get searchQueryTitle() {
+    return this.gifService.getLastQueryFromLocalStorage();
+  }
+
+  constructor(private gifService: GifService) {}
 
   ngOnInit(): void {
-    this.subsOnChangePageSelector();
     this.setSelectorValue(0);
   }
 
   public setSelectorValue(changeIncrement: number): void {
-    const page = this.form.get('pages')?.value;
-    this.form.reset({
-      pages: page ? page + changeIncrement : 0,
-    });
-  }
+    const page = this.pagination.offset;
 
-  private subsOnChangePageSelector(): void {
-    this.form
-      .get('pages')
-      ?.valueChanges.pipe(
-        tap((offset: string) => {
-          const lastSearchQuery =
-            this.gifService.getLastQueryFromLocalStorage();
-          if (lastSearchQuery) {
-            this.gifService.searchGif(lastSearchQuery, +offset);
-          }
-          this.scrollToSearchInput();
-        })
-      )
-      .subscribe();
+    const followingPage = page + changeIncrement;
+
+    const lastSearchQuery = this.gifService.getLastQueryFromLocalStorage();
+    if (lastSearchQuery) {
+      this.gifService.searchGif(lastSearchQuery, +followingPage);
+    }
+    this.scrollToSearchInput();
   }
 
   private getPages(pagination: Pagination): number[] {

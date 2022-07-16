@@ -25,6 +25,10 @@ export class GifService {
     return [...this._searchHistory];
   }
 
+  get hasDataLoaded() {
+    return Boolean(this.gifDataGrid.data.length);
+  }
+
   constructor(private httpClient: HttpClient) {
     this.loadHistoryFromLocalStorage();
     this.loadLastQuerySearch();
