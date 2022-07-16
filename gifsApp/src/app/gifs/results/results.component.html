@@ -4,9 +4,7 @@
     class="animate__animated animate__fadeIn"
   >
     <p>
-      <a [href]="gif.images.fixed_height['webp']">{{
-        gif.title | titlecase | giftTitleShortener
-      }}</a>
+      {{ gif.title | titlecase | giftTitleShortener }}
     </p>
     <img
       [attr.loading]="id <= 5 ? '' : 'lazy'"

@@ -21,10 +21,6 @@ export class PaginationComponent implements OnInit {
     return this.gifService.hasDataLoaded;
   }
 
-  get searchQueryTitle() {
-    return this.gifService.getLastQueryFromLocalStorage();
-  }
-
   constructor(private gifService: GifService) {}
 
   ngOnInit(): void {

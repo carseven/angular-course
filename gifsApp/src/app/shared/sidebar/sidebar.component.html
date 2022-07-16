@@ -1,13 +1,17 @@
 <div id="sidebar" class="bg-dark border-right p-3">
-  <h1 class="text-light animate__animated animate__bounce">GifsApp</h1>
-  <p *ngIf="searchedQueriesHistory.length" class="text-light">Search history</p>
+  <h1 class="animate__animated animate__bounce">GifsApp</h1>
+  <p *ngIf="searchedQueriesHistory.length" class="text-light mt-5">
+    Search history
+  </p>
   <div class="list-group list-reset">
     <button
       *ngFor="let searchedQuery of searchedQueriesHistory"
       (click)="searchGif(searchedQuery)"
       class="list-group-item list-group-item-action animate__animated animate__fadeIn"
     >
-      {{ searchedQuery | titlecase }}
+      <p class="break-long-words">
+        {{ searchedQuery | titlecase }}
+      </p>
     </button>
   </div>
 </div>

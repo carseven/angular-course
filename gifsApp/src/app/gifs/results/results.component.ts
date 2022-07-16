@@ -38,6 +38,7 @@ export class ResultsComponent {
       showConfirmButton: false,
       position: 'top-right',
       icon: 'info',
+      width: 600,
     });
   }
 }
