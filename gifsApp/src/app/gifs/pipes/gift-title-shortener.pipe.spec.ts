@@ -1,15 +1,34 @@
 import { GiftTitleShortenerPipe } from './gift-title-shortener.pipe';
 
+type Spied<T> = {
+  [Method in keyof T]: jasmine.Spy;
+};
+
 describe('GiftTitleShortenerPipe', () => {
-  it('create an instance', () => {
-    const pipe = new GiftTitleShortenerPipe();
-    expect(pipe).toBeTruthy();
+  let gifTitleShortenerPipe: GiftTitleShortenerPipe;
+  beforeEach(() => {
+    gifTitleShortenerPipe = new GiftTitleShortenerPipe();
   });
-  it('should make shorter gif title', () => {
-    const pipe = new GiftTitleShortenerPipe();
+
+  it('should create an instance of GifTitleShortenerPipe', () => {
+    expect(gifTitleShortenerPipe).toBeTruthy();
+  });
+  it('should make gif title shorter', () => {
     expect(
-      pipe.transform(
+      gifTitleShortenerPipe.transform(
         'Clap Applause Gif By Fantastic Beasts: The Secrets Of Dumbledore'
+      )
+    ).toBe('Clap Applause');
+
+    expect(
+      gifTitleShortenerPipe.transform(
+        'Clap Applause GIF By Fantastic Beasts: The Secrets Of Dumbledore'
+      )
+    ).toBe('Clap Applause');
+
+    expect(
+      gifTitleShortenerPipe.transform(
+        'Clap Applause gif By Fantastic Beasts: The Secrets Of Dumbledore'
       )
     ).toBe('Clap Applause');
   });

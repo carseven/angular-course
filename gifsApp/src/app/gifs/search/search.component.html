@@ -1,10 +1,16 @@
-<div>
-  <h2>Search:</h2>
-  <input
-    #searchInput
-    (keyup.enter)="search(searchInput.value)"
-    type="text"
-    class="form-control"
-    placeholder="Search gifs..."
-  />
+<div class="wrapper">
+  <form>
+    <input
+      id="searchInput"
+      class="input-group input-group-lg"
+      #searchInput
+      (keyup.enter)="search(searchInput.value)"
+      type="text"
+      class="form-control"
+      placeholder="Search gifs..."
+    />
+    <button class="btn btn-dark" (click)="search(searchInput.value)">
+      Search
+    </button>
+  </form>
 </div>

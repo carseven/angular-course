@@ -1,0 +1,27 @@
+<div class="pagination-container">
+  <button
+    class="btn btn-dark"
+    (click)="setSelectorValue(-1)"
+    [ngClass]="{
+      disabled: pagination.offset === 0
+    }"
+  >
+    Previous Page
+  </button>
+  <form [formGroup]="form">
+    <select class="form-control" formControlName="pages">
+      <option *ngFor="let page of pages" [value]="page">
+        {{ page }}
+      </option>
+    </select>
+  </form>
+  <button
+    class="btn btn-dark float-end"
+    (click)="setSelectorValue(+1)"
+    [ngClass]="{
+      disabled: pagination.offset > pagination.total_count - 1
+    }"
+  >
+    Next page
+  </button>
+</div>

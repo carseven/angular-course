@@ -1,3 +1,4 @@
+import { TitleCasePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -5,10 +6,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class GiftTitleShortenerPipe implements PipeTransform {
   separatorWord = 'Gif';
-  transform(gitTitle: string): string {
-    if (gitTitle.includes('Gif')) {
-      return gitTitle.split(this.separatorWord)[0]?.trim();
+
+  titleCase: TitleCasePipe = new TitleCasePipe();
+
+  constructor() {}
+
+  transform(gifTitle: string): string {
+    const gifTitleCase = this.titleCase.transform(gifTitle);
+    if (gifTitleCase.includes(this.separatorWord)) {
+      return gifTitleCase.split(this.separatorWord)[0]?.trim();
     }
-    return gitTitle;
+    return gifTitleCase;
   }
 }

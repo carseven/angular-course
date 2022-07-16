@@ -1,24 +1,20 @@
-<div class="row">
-  <div
+<ul>
+  <li
     *ngFor="let gif of gifs; let id = index"
-    class="col-md-4 col-sm-6 mb-4 animate__animated animate__fadeIn"
+    class="animate__animated animate__fadeIn"
   >
-    <div class="card-img">
-      <div class="card-body">
-        <p>
-          <a [href]="gif.images.fixed_height.webp">{{
-            gif.title | titlecase | giftTitleShortener
-          }}</a>
-        </p>
-        <img
-          class="flex-i"
-          [attr.loading]="id <= 5 ? '' : 'lazy'"
-          [src]="gif.images.fixed_height.webp"
-          [height]="gif.images.fixed_height.height"
-          [width]="gif.images.fixed_height.width"
-          [alt]="gif.title"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+    <p>
+      <a [href]="gif.images.fixed_height['webp']">{{
+        gif.title | titlecase | giftTitleShortener
+      }}</a>
+    </p>
+    <img
+      [attr.loading]="id <= 5 ? '' : 'lazy'"
+      [src]="gif.images.fixed_height['webp']"
+      [alt]="gif.title"
+      [title]="gif.title | titlecase | giftTitleShortener"
+      data-toggle="tooltip"
+      (click)="onCickGifTitle(gif)"
+    />
+  </li>
+</ul>
